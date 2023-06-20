@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionPool
 {
-    private static String url = "jdbc:mysql://localhost:3306/MyApp?serverTimezone=America/Bogota";
+    private static String url = "jdbc:mysql://localhost:3307/MyApp?serverTimezone=America/Bogota";
     private static String user = "myappuser";
     private static String pass = "mypassword";
     private static BasicDataSource pool;

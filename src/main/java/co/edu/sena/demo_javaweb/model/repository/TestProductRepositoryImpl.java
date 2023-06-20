@@ -12,7 +12,7 @@ public class TestProductRepositoryImpl {
         Product productInsert = new Product();
         productInsert.setProductName("Product A");
         productInsert.setProductValue(100);
-        productInsert.setCategoryId(1);
+        productInsert.setCategoryId(3);
         repository.saveObj(productInsert);
 
         System.out.println("-------------listAllObj-------------");
@@ -28,7 +28,7 @@ public class TestProductRepositoryImpl {
         productUpdate.setProductId(1);
         productUpdate.setProductName("Updated Product A");
         productUpdate.setProductValue(150);
-        productUpdate.setCategoryId(2);
+        productUpdate.setCategoryId(3);
         repository.saveObj(productUpdate);
 
         System.out.println("-------------listAllObj-------------");

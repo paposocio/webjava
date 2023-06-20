@@ -3,8 +3,6 @@ package co.edu.sena.demo_javaweb.controller;
 import co.edu.sena.demo_javaweb.model.beans.Category;
 import co.edu.sena.demo_javaweb.model.repository.CategoryRepositoryImpl;
 import co.edu.sena.demo_javaweb.model.repository.Repository;
-import co.edu.sena.demo_javaweb.util.ConnectionPool;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,50 +14,38 @@ import java.sql.SQLException;
 
 @WebServlet(name = "CategoryServlet", value = "/register-category")
 public class CategoryServlet extends HttpServlet {
-    private Repository<Category> categoryRepository;
-
-    @Override
-    public void init() throws ServletException {
-        try {
-            // Crear una instancia del repositorio de categorías
-            categoryRepository = new CategoryRepositoryImpl();
-        } catch (Exception e) {
-            throw new ServletException("Error al inicializar el repositorio de categorías", e);
-        }
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener el nombre de la categoría enviado desde el formulario
-        String categoryName = request.getParameter("categoryName");
 
+        // Load the JDBC driver manually
         try {
-            // Crear una instancia de la categoría con el nombre obtenido
-            Category category = new Category(null, categoryName);
-
-            // Guardar la categoría en la base de datos utilizando el repositorio
-            try {
-                categoryRepository.saveObj(category);
-            } catch (SQLException e) {
-                throw new ServletException("Error al registrar la categoría", e);
-            }
-
-            // Redireccionar a una página de éxito o mostrar un mensaje de éxito
-            response.sendRedirect("success.jsp");
-        } catch (ServletException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new ServletException("Error al procesar la solicitud", e);
-        }
-    }
-
-    @Override
-    public void destroy() {
-        // Cerrar la conexión con la base de datos al finalizar
-        try {
-            ConnectionPool.getInstance().close();
-        } catch (SQLException e) {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+
+        //collect all form data
+        String category_name = request.getParameter("category_name");
+
+        //fill it up in a user bean
+        Category category = new Category();
+        category.setCategoryName(category_name);
+
+        //call repository tayer and save the user object to do
+        Repository<Category> repository = new CategoryRepositoryImpl();
+        boolean success = true;
+        try{
+            repository.saveObj(category);
+        }catch (SQLException e){
+            e.printStackTrace();
+            success = false;
+        }
+
+        //prepare an information message for user about success or failure of the operation
+        if(!success){
+            System.out.println("Ocurrió un error");
+        }else {
+            request.getRequestDispatcher("/views/success.jsp").forward(request, response);
         }
     }
 }

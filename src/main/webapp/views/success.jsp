@@ -77,7 +77,7 @@
 <section class="warningbox">
     <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yes_Check_Circle.svg/2048px-Yes_Check_Circle.svg.png' class='avatar'>
     <h1>Bienvenido, registro exitoso </h1>
-    <form action="../index.jsp" >
+    <form action="/index.jsp" >
         <input type="submit" value="Volver a la pagina de inicio"/>
     </form>
 </section>
