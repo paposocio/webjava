@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de control</title>
-    <link rel="icon" type="image/x-icon" href="../images/icon.png">
-    <link rel="stylesheet" href="../css/catpro.css">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/catpro.css">
     <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -18,27 +18,23 @@
 
         <div class="header-limiter">
 
-            <h1><a href="#">My<span>App</span></a></h1>
+            <h1><a href="${pageContext.request.contextPath}/redirection?page=start">My<span>App</span></a></h1>
 
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Blog</a>
-                <a href="#">Pricing</a>
-                <a href="#">About</a>
-                <a href="#">Faq</a>
-                <a href="#">Contact</a>
+                <a href="redirection?page=products">Registro productos</a>
+                <a href="redirection?page=categories">Registro categoria</a>
             </nav>
 
         </div>
 
     </header>
     <section class="header">
-        <img src="../images/icon.png" alt="logo" width="7%">
+        <img src="${pageContext.request.contextPath}/images/icon.png" alt="logo" width="7%">
     </section>
 
     <section class="loginContainer">
         <h1 class="text-secondary">Registro Productos</h1>
-        <form class="row g-3" action="../register-product" method="post">
+        <form class="row g-3" action="${pageContext.request.contextPath}/register-product" method="post">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nombre del producto</label>
                 <input type="text" class="form-control" name="productName" id="exampleFormControlInput1" required>

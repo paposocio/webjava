@@ -25,15 +25,11 @@
 
       <div class="header-limiter">
 
-        <h1><a href="#">My<span>App</span></a></h1>
+        <h1><a href="${pageContext.request.contextPath}/redirection?page=start">My<span>App</span></a></h1>
 
         <nav>
-          <a href="#">Home</a>
-          <a href="#">Blog</a>
-          <a href="#">Pricing</a>
-          <a href="#">About</a>
-          <a href="#">Faq</a>
-          <a href="#">Contact</a>
+          <a href="redirection?page=products">Registro productos</a>
+          <a href="redirection?page=categories">Registro categoria</a>
         </nav>
 
       </div>
@@ -47,7 +43,7 @@
     <section class="loginContainer">
       <div class="login-page">
         <div class="form">
-          <form class="register-form" action="/register-user" method="post">
+          <form class="register-form" action="${pageContext.request.contextPath}/register-user" method="post">
             <input type="text" name="firstName" id="firstName" placeholder="Primer nombre" required autofocus
               pattern="[A-Zz-z]+{2,40}">
             <input type="text" name="lastName" id="lastName" placeholder="Primer apellido" required
@@ -66,8 +62,6 @@
             <button>Iniciar</button>
             <p class="message">¿Sin registrar? <a href="#">Crea una cuenta</a></p>
           </form>
-
-          <a href="views/products.jsp">oajfkñaf</a>
 
         </div>
       </div>
