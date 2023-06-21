@@ -44,12 +44,12 @@
       <div class="login-page">
         <div class="form">
           <form class="register-form" action="${pageContext.request.contextPath}/register-user" method="post">
-            <input type="text" name="firstName" id="firstName" placeholder="Primer nombre" required autofocus
+            <input type="text" name="user_firstname" id="firstName" placeholder="Primer nombre" required autofocus
               pattern="[A-Zz-z]+{2,40}">
-            <input type="text" name="lastName" id="lastName" placeholder="Primer apellido" required
+            <input type="text" name="user_lastname" id="lastName" placeholder="Primer apellido" required
               pattern="[A-Zz-z]+{2,40}">
-            <input type="email" name="email" id="email" placeholder="Correo electronico" required pattern="{,60}">
-            <input type="password" name="password" id="password" placeholder="Contraseña" required
+            <input type="email" name="user_email" id="email" placeholder="Correo electronico" required pattern="{,60}">
+            <input type="password" name="user_password" id="password" placeholder="Contraseña" required
               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}">
             <button>Crear</button>
             <p class="message">¿Registrado? <a href="#">Inicia sesion</a></p>
