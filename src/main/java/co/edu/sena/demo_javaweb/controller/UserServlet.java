@@ -35,12 +35,12 @@ public class UserServlet extends HttpServlet {
 
         // Call repository layer and save the user object
         Repository<User> repository = new UserRepositoryImpl();
-        String errorMessage = null;
+        boolean success = true;
         try {
             repository.saveObj(user);
         } catch (SQLException e) {
             e.printStackTrace();
-            errorMessage = e.getMessage();
+            success = false;
         }
 
         // Prepare an information message for the user about the success or failure of the operation
