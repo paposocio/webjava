@@ -25,17 +25,35 @@ user_email varchar (60) not null,
 user_password varbinary (256) not null
 );
 
-CREATE USER 'myappuser'@'%' IDENTIFIED BY 'mypassword';
-GRANT SELECT, INSERT, UPDATE, DELETE ON MyApp.users_tbl TO 'myappuser'@'%';
-
-INSERT INTO MyApp.users_tbl (user_firstname, user_lastname, user_email, user_password) 
-VALUES (UPPER('JuAN'), UPPER('GaRZOn'), 'messi321@example.com',
-AES_ENCRYPT('clavecuenta', '$2a$12$h.dl7n64P0qaGYnQfKgCSuzVKrh3q3p9xkZ/VxR6NtnN7Lud6of.u')
+create table categories
+(
+category_id int auto_increment primary key,
+category_name varchar(255)
 );
 
-SELECT *, 
-CAST(AES_DECRYPT(user_password, '$2a$12$h.dl7n64P0qaGYnQfKgCSuzVKrh3q3p9xkZ/VxR6NtnN7Lud6of.u') 
-AS CHAR(50)) decrypted_pass FROM users_tbl WHERE user_id = 1;
+create table products
+(
+product_id int auto_increment primary key,
+product_name varchar(255),
+product_value int,
+categoryid int,
+foreign key (categoryid) references categories(category_id)
+);
+
+
+INSERT INTO MyApp.users_tbl (user_firstname, user_lastname, user_email, user_password) 
+VALUES (UPPER('nombres'), UPPER('apellidos'), 'buzon@correo.com',
+AES_ENCRYPT('password', '$2a$12$h.dl7n64P0qaGYnQfKgCSuzVKrh3q3p9xkZ/VxR6NtnN7Lud6of.u
+')
+);
+
+insert into myapp.categories (category_name)
+values (('categoria3'));
+
+CREATE USER 'myappuser'@'localhost' IDENTIFIED BY 'mypassword';
+GRANT SELECT, INSERT, UPDATE, DELETE ON myapp.users_tbl TO 'myappuser'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON myapp.products TO 'myappuser'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON myapp.categories TO 'myappuser'@'localhost';
 ```
 ## Autor
 
