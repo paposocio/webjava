@@ -64,6 +64,5 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON myapp.categories TO 'myappuser'@'localho
 Puede encontrarme en:
 
 - [LinkedIn](https://www.linkedin.com)
-- [Twitter](https://twitter.com)
 
 
